@@ -20,14 +20,14 @@ export const NotFoundPage: React.FC = () => {
         </div>
 
         <div className="space-y-4">
-          <Button asChild className="w-full">
+          <Button className="w-full">
             <Link to="/dashboard">
               <Home className="w-4 h-4 mr-2" />
               Go to Dashboard
             </Link>
           </Button>
           
-          <Button variant="outline" asChild className="w-full">
+          <Button variant="outline" className="w-full">
             <Link to="/login">
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Login

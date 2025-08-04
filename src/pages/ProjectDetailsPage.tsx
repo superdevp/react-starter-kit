@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Plus, Edit, Trash2, Filter, CheckCircle, Circle, Calendar, Clock } from 'lucide-react';
+import { Plus, Edit, Trash2, Filter, CheckCircle, Circle, Calendar } from 'lucide-react';
 import { projectsAPI, tasksAPI } from '../services/api';
 import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
