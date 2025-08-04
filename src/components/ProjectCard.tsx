@@ -29,7 +29,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   };
 
   return (
-    <div className="card hover:shadow-md transition-shadow cursor-pointer group">
+    <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800 hover:shadow-md transition-shadow cursor-pointer group">
       <div onClick={onClick} className="space-y-4">
         {/* Header */}
         <div className="flex items-start justify-between">

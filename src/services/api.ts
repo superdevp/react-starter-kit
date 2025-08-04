@@ -102,7 +102,7 @@ export const projectsAPI = {
     await delay(600);
     
     const newProject: Project = {
-      id: Date.now().toString(),
+      id: `project_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
       ...data,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
@@ -173,7 +173,7 @@ export const tasksAPI = {
     }
     
     const newTask: Task = {
-      id: Date.now().toString(),
+      id: `task_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
       ...data,
       status: 'pending',
       projectId,

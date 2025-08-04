@@ -64,4 +64,5 @@ export interface TaskFormData {
   description: string;
   priority: 'low' | 'medium' | 'high';
   dueDate: string;
+  status: 'pending' | 'completed';
 } 

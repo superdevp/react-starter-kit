@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import { ThemeProvider } from './contexts/ThemeContext';
@@ -6,7 +5,7 @@ import { Header } from './layout/Header';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { LoginPage } from './pages/auth/LoginPage';
 import { DashboardPage } from './pages/DashboardPage';
-import { ProjectDetailsPage } from './pages/ProjectDetailsPage';
+import ProjectDetailsPage from './pages/ProjectDetailsPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 function App() {

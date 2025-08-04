@@ -21,6 +21,7 @@ export const DashboardPage: React.FC = () => {
   });
   const [createErrors, setCreateErrors] = useState<FormErrors>({});
   const [isCreating, setIsCreating] = useState(false);
+  const [submittedProjects, setSubmittedProjects] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     loadProjects();
@@ -41,6 +42,19 @@ export const DashboardPage: React.FC = () => {
   const handleCreateProject = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Prevent multiple submissions
+    if (isCreating) {
+      return;
+    }
+    
+    // Create a unique key for this submission to prevent duplicates
+    const submissionKey = `${createFormData.title}-${createFormData.description}-${Date.now()}`;
+    
+    // Check if this exact submission is already being processed
+    if (submittedProjects.has(submissionKey)) {
+      return;
+    }
+    
     // Validate form
     const errors: FormErrors = {};
     if (!createFormData.title.trim()) {
@@ -57,8 +71,19 @@ export const DashboardPage: React.FC = () => {
 
     try {
       setIsCreating(true);
+      setSubmittedProjects(prev => new Set(prev).add(submissionKey));
+      
       const response = await projectsAPI.create(createFormData);
-      setProjects(prev => [...prev, response.data]);
+      
+      // Check if project already exists to prevent duplicates
+      setProjects(prev => {
+        const exists = prev.some(p => p.id === response.data.id);
+        if (exists) {
+          return prev;
+        }
+        return [...prev, response.data];
+      });
+      
       setIsCreateModalOpen(false);
       setCreateFormData({ title: '', description: '' });
       setCreateErrors({});
@@ -67,6 +92,14 @@ export const DashboardPage: React.FC = () => {
       setCreateErrors({ general: 'Failed to create project. Please try again.' });
     } finally {
       setIsCreating(false);
+      // Clean up the submission key after a delay
+      setTimeout(() => {
+        setSubmittedProjects(prev => {
+          const newSet = new Set(prev);
+          newSet.delete(submissionKey);
+          return newSet;
+        });
+      }, 1000);
     }
   };
 
@@ -103,7 +136,7 @@ export const DashboardPage: React.FC = () => {
             <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-1/4 mb-8"></div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[...Array(6)].map((_, i) => (
-                <div key={i} className="card">
+                <div key={i} className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
                   <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
                   <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded mb-2"></div>
                   <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
