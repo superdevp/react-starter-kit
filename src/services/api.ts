@@ -1,7 +1,6 @@
 import type { Project, Task, User, ApiResponse, ProjectFormData, TaskFormData } from '../types';
 import { mockProjects, mockUser } from './mockData';
 
-// Local storage keys
 const STORAGE_KEYS = {
   PROJECTS: 'react_starter_kit_projects',
   USER: 'react_starter_kit_user',
@@ -68,7 +67,6 @@ export const authAPI = {
   },
 };
 
-// Projects API
 export const projectsAPI = {
   getAll: async (): Promise<ApiResponse<Project[]>> => {
     await delay(500);
@@ -156,7 +154,6 @@ export const projectsAPI = {
   },
 };
 
-// Tasks API
 export const tasksAPI = {
   create: async (projectId: string, data: TaskFormData): Promise<ApiResponse<Task>> => {
     await delay(500);
@@ -192,7 +189,6 @@ export const tasksAPI = {
     let task: Task | undefined;
     let project: Project | undefined;
     
-    // Find the task and its project
     for (const p of projects) {
       const taskIndex = p.tasks.findIndex(t => t.id === taskId);
       if (taskIndex !== -1) {
@@ -228,7 +224,6 @@ export const tasksAPI = {
     
     let project: Project | undefined;
     
-    // Find the project containing the task
     for (const p of projects) {
       const taskIndex = p.tasks.findIndex(t => t.id === taskId);
       if (taskIndex !== -1) {
@@ -258,7 +253,6 @@ export const tasksAPI = {
     let task: Task | undefined;
     let project: Project | undefined;
     
-    // Find the task and its project
     for (const p of projects) {
       const taskIndex = p.tasks.findIndex(t => t.id === taskId);
       if (taskIndex !== -1) {
