@@ -87,7 +87,6 @@ export const DashboardPage: React.FC = () => {
       setCreateErrors({ general: 'Failed to create project. Please try again.' });
     } finally {
       setIsCreating(false);
-      // Clean up the submission key after a delay
       setTimeout(() => {
         setSubmittedProjects(prev => {
           const newSet = new Set(prev);
@@ -180,7 +179,6 @@ export const DashboardPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Projects Grid */}
         {filteredProjects.length === 0 ? (
           <div className="text-center py-12">
             <div className="w-16 h-16 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -215,7 +213,6 @@ export const DashboardPage: React.FC = () => {
           </div>
         )}
 
-        {/* Create Project Modal */}
         <Modal
           isOpen={isCreateModalOpen}
           onClose={() => {
