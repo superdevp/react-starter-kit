@@ -42,20 +42,16 @@ export const DashboardPage: React.FC = () => {
   const handleCreateProject = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Prevent multiple submissions
     if (isCreating) {
       return;
     }
     
-    // Create a unique key for this submission to prevent duplicates
     const submissionKey = `${createFormData.title}-${createFormData.description}-${Date.now()}`;
     
-    // Check if this exact submission is already being processed
     if (submittedProjects.has(submissionKey)) {
       return;
     }
     
-    // Validate form
     const errors: FormErrors = {};
     if (!createFormData.title.trim()) {
       errors.title = 'Project title is required';
@@ -75,7 +71,6 @@ export const DashboardPage: React.FC = () => {
       
       const response = await projectsAPI.create(createFormData);
       
-      // Check if project already exists to prevent duplicates
       setProjects(prev => {
         const exists = prev.some(p => p.id === response.data.id);
         if (exists) {
