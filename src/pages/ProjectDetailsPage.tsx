@@ -63,20 +63,16 @@ const ProjectDetailsPage: React.FC = () => {
   const handleTaskSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Prevent multiple submissions
     if (isSubmitting) {
       return;
     }
     
-    // Create a unique key for this submission to prevent duplicates
     const submissionKey = `${taskForm.title}-${taskForm.description}-${taskForm.dueDate}-${Date.now()}`;
     
-    // Check if this exact submission is already being processed
     if (submittedTasks.has(submissionKey)) {
       return;
     }
     
-    // Validate form
     const errors: FormErrors = {};
     if (!taskForm.title.trim()) {
       errors.title = 'Title is required';
@@ -95,7 +91,6 @@ const ProjectDetailsPage: React.FC = () => {
       setSubmittedTasks(prev => new Set(prev).add(submissionKey));
       
       if (editingTask) {
-        // Update existing task
         const response = await tasksAPI.update(editingTask.id, taskForm);
         if (response.success && response.data) {
           setTasks(tasks.map(task => 
@@ -103,10 +98,8 @@ const ProjectDetailsPage: React.FC = () => {
           ));
         }
       } else {
-        // Create new task
         const response = await tasksAPI.create(project!.id, taskForm);
         if (response.success && response.data) {
-          // Check if task already exists to prevent duplicates
           setTasks(prev => {
             const exists = prev.some(t => t.id === response.data.id);
             if (exists) {
