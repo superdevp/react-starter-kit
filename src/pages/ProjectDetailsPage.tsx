@@ -63,20 +63,16 @@ const ProjectDetailsPage: React.FC = () => {
   const handleTaskSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Prevent multiple submissions
     if (isSubmitting) {
       return;
     }
     
-    // Create a unique key for this submission to prevent duplicates
     const submissionKey = `${taskForm.title}-${taskForm.description}-${taskForm.dueDate}-${Date.now()}`;
     
-    // Check if this exact submission is already being processed
     if (submittedTasks.has(submissionKey)) {
       return;
     }
     
-    // Validate form
     const errors: FormErrors = {};
     if (!taskForm.title.trim()) {
       errors.title = 'Title is required';
@@ -95,7 +91,6 @@ const ProjectDetailsPage: React.FC = () => {
       setSubmittedTasks(prev => new Set(prev).add(submissionKey));
       
       if (editingTask) {
-        // Update existing task
         const response = await tasksAPI.update(editingTask.id, taskForm);
         if (response.success && response.data) {
           setTasks(tasks.map(task => 
@@ -103,10 +98,8 @@ const ProjectDetailsPage: React.FC = () => {
           ));
         }
       } else {
-        // Create new task
         const response = await tasksAPI.create(project!.id, taskForm);
         if (response.success && response.data) {
-          // Check if task already exists to prevent duplicates
           setTasks(prev => {
             const exists = prev.some(t => t.id === response.data.id);
             if (exists) {
@@ -122,7 +115,6 @@ const ProjectDetailsPage: React.FC = () => {
       setTaskErrors({ general: 'Failed to save task' });
     } finally {
       setIsSubmitting(false);
-      // Clean up the submission key after a delay
       setTimeout(() => {
         setSubmittedTasks(prev => {
           const newSet = new Set(prev);
@@ -256,7 +248,6 @@ const ProjectDetailsPage: React.FC = () => {
             </Button>
           </div>
           
-          {/* Progress */}
           <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm">
             <div className="flex items-center justify-between mb-2">
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -275,7 +266,6 @@ const ProjectDetailsPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Tasks Section */}
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm">
           <div className="p-6 border-b border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between">
@@ -283,7 +273,6 @@ const ProjectDetailsPage: React.FC = () => {
                 Tasks
               </h2>
               <div className="flex items-center space-x-3">
-                {/* Filter Button */}
                 <Button
                   variant="outline"
                   size="sm"
@@ -293,7 +282,6 @@ const ProjectDetailsPage: React.FC = () => {
                   Filter
                 </Button>
                 
-                {/* Add Task Button */}
                 <Button onClick={() => openTaskModal()} size="sm">
                   <Plus className="w-4 h-4 mr-2" />
                   Add Task
@@ -301,7 +289,6 @@ const ProjectDetailsPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Filter Options */}
             {showFilters && (
               <div className="mt-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
                 <div className="flex items-center space-x-4">
@@ -326,7 +313,6 @@ const ProjectDetailsPage: React.FC = () => {
             )}
           </div>
 
-          {/* Tasks List */}
           <div className="p-6">
             {filteredTasks.length === 0 ? (
               <div className="text-center py-12">
@@ -356,7 +342,6 @@ const ProjectDetailsPage: React.FC = () => {
                     key={task.id}
                     className="flex items-center p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                   >
-                    {/* Status Toggle */}
                     <button
                       onClick={() => handleToggleTaskStatus(task.id)}
                       className="mr-4 text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
@@ -368,7 +353,6 @@ const ProjectDetailsPage: React.FC = () => {
                       )}
                     </button>
 
-                    {/* Task Info */}
                     <div 
                       className="flex-1 cursor-pointer"
                       onClick={() => openTaskModal(task)}
@@ -395,7 +379,6 @@ const ProjectDetailsPage: React.FC = () => {
                             {new Date(task.dueDate).toLocaleDateString()}
                           </div>
                           
-                          {/* Status Badge */}
                           <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                             task.status === 'completed'
                               ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
@@ -407,7 +390,6 @@ const ProjectDetailsPage: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Actions */}
                     <div className="flex items-center space-x-2 ml-4">
                       <button
                         onClick={() => openTaskModal(task)}
@@ -430,7 +412,6 @@ const ProjectDetailsPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Task Modal */}
       <Modal
         isOpen={isTaskModalOpen}
         onClose={closeTaskModal}

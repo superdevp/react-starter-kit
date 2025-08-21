@@ -15,10 +15,8 @@ function App() {
         <Router>
           <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
             <Routes>
-              {/* Public routes */}
               <Route path="/login" element={<LoginPage />} />
               
-              {/* Protected routes */}
               <Route
                 path="/dashboard"
                 element={
@@ -43,10 +41,8 @@ function App() {
                 }
               />
               
-              {/* Redirect root to dashboard */}
               <Route path="/" element={<Navigate to="/dashboard" replace />} />
               
-              {/* 404 page */}
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </div>

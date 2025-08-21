@@ -1,14 +1,12 @@
 import type { Project, Task, User, ApiResponse, ProjectFormData, TaskFormData } from '../types';
 import { mockProjects, mockUser } from './mockData';
 
-// Local storage keys
 const STORAGE_KEYS = {
   PROJECTS: 'react_starter_kit_projects',
   USER: 'react_starter_kit_user',
   AUTH_TOKEN: 'react_starter_kit_token',
 } as const;
 
-// Helper functions for localStorage
 const getFromStorage = <T>(key: string, defaultValue: T): T => {
   try {
     const item = localStorage.getItem(key);
@@ -26,23 +24,18 @@ const setToStorage = <T>(key: string, value: T): void => {
   }
 };
 
-// Simulate API delay
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
-// Initialize data from localStorage or use mock data
 let projects: Project[] = getFromStorage(STORAGE_KEYS.PROJECTS, mockProjects);
 let currentUser: User | null = getFromStorage(STORAGE_KEYS.USER, null);
 
-// Save data to localStorage whenever it changes
 const saveProjects = () => setToStorage(STORAGE_KEYS.PROJECTS, projects);
 const saveUser = () => setToStorage(STORAGE_KEYS.USER, currentUser);
 
-// Authentication API
 export const authAPI = {
   login: async (email: string, password: string): Promise<ApiResponse<User>> => {
-    await delay(800); // Simulate network delay
+    await delay(800);
     
-    // Mock authentication - accept any email/password for demo
     if (email && password) {
       currentUser = mockUser;
       saveUser();
@@ -74,7 +67,6 @@ export const authAPI = {
   },
 };
 
-// Projects API
 export const projectsAPI = {
   getAll: async (): Promise<ApiResponse<Project[]>> => {
     await delay(500);
@@ -162,7 +154,6 @@ export const projectsAPI = {
   },
 };
 
-// Tasks API
 export const tasksAPI = {
   create: async (projectId: string, data: TaskFormData): Promise<ApiResponse<Task>> => {
     await delay(500);
@@ -198,7 +189,6 @@ export const tasksAPI = {
     let task: Task | undefined;
     let project: Project | undefined;
     
-    // Find the task and its project
     for (const p of projects) {
       const taskIndex = p.tasks.findIndex(t => t.id === taskId);
       if (taskIndex !== -1) {
@@ -234,7 +224,6 @@ export const tasksAPI = {
     
     let project: Project | undefined;
     
-    // Find the project containing the task
     for (const p of projects) {
       const taskIndex = p.tasks.findIndex(t => t.id === taskId);
       if (taskIndex !== -1) {
@@ -264,7 +253,6 @@ export const tasksAPI = {
     let task: Task | undefined;
     let project: Project | undefined;
     
-    // Find the task and its project
     for (const p of projects) {
       const taskIndex = p.tasks.findIndex(t => t.id === taskId);
       if (taskIndex !== -1) {

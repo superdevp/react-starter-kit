@@ -42,20 +42,16 @@ export const DashboardPage: React.FC = () => {
   const handleCreateProject = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Prevent multiple submissions
     if (isCreating) {
       return;
     }
     
-    // Create a unique key for this submission to prevent duplicates
     const submissionKey = `${createFormData.title}-${createFormData.description}-${Date.now()}`;
     
-    // Check if this exact submission is already being processed
     if (submittedProjects.has(submissionKey)) {
       return;
     }
     
-    // Validate form
     const errors: FormErrors = {};
     if (!createFormData.title.trim()) {
       errors.title = 'Project title is required';
@@ -75,7 +71,6 @@ export const DashboardPage: React.FC = () => {
       
       const response = await projectsAPI.create(createFormData);
       
-      // Check if project already exists to prevent duplicates
       setProjects(prev => {
         const exists = prev.some(p => p.id === response.data.id);
         if (exists) {
@@ -92,7 +87,6 @@ export const DashboardPage: React.FC = () => {
       setCreateErrors({ general: 'Failed to create project. Please try again.' });
     } finally {
       setIsCreating(false);
-      // Clean up the submission key after a delay
       setTimeout(() => {
         setSubmittedProjects(prev => {
           const newSet = new Set(prev);
@@ -185,7 +179,6 @@ export const DashboardPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Projects Grid */}
         {filteredProjects.length === 0 ? (
           <div className="text-center py-12">
             <div className="w-16 h-16 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -220,7 +213,6 @@ export const DashboardPage: React.FC = () => {
           </div>
         )}
 
-        {/* Create Project Modal */}
         <Modal
           isOpen={isCreateModalOpen}
           onClose={() => {

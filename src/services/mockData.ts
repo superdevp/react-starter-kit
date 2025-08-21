@@ -1,6 +1,5 @@
 import type { Project, Task, User } from '../types';
 
-// Mock user data
 export const mockUser: User = {
   id: '1',
   email: 'demo@example.com',
@@ -8,7 +7,6 @@ export const mockUser: User = {
   avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
 };
 
-// Mock projects data
 export const mockProjects: Project[] = [
   {
     id: '1',
@@ -130,17 +128,14 @@ export const mockProjects: Project[] = [
   },
 ];
 
-// Helper function to get all tasks from all projects
 export const getAllTasks = (): Task[] => {
   return mockProjects.flatMap(project => project.tasks);
 };
 
-// Helper function to get project by ID
 export const getProjectById = (id: string): Project | undefined => {
   return mockProjects.find(project => project.id === id);
 };
 
-// Helper function to get task by ID
 export const getTaskById = (taskId: string): Task | undefined => {
   return getAllTasks().find(task => task.id === taskId);
 }; 
