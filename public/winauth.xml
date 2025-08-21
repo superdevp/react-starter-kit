@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<WinAuth version="3.5">
+  <alwaysontop>true</alwaysontop>
+  <usetrayicon>false</usetrayicon>
+  <notifyaction>Notification</notifyaction>
+  <startwithwindows>false</startwithwindows>
+  <autosize>true</autosize>
+  <left>218</left>
+  <top>466</top>
+  <width>0</width>
+  <height>0</height>
+  <WinAuthAuthenticator id="e7d576f8-d686-4cd5-964b-e28e54c405a1" type="WinAuth.GoogleAuthenticator">
+    <name>superdevp@gmail.com</name>
+    <created>1752477572772</created>
+    <autorefresh>true</autorefresh>
+    <allowcopy>false</allowcopy>
+    <copyoncode>false</copyoncode>
+    <hideserial>false</hideserial>
+    <skin>GMailIcon.png</skin>
+    <authenticatordata>
+      <servertimediff>15925</servertimediff>
+      <lastservertime>638914179030746624</lastservertime>
+      <secretdata>E814A3B1BD121C100D614FDD6BAF7FA432D0FCB3	6</secretdata>
+    </authenticatordata>
+  </WinAuthAuthenticator>
+  <WinAuthAuthenticator id="2a74521e-e7db-43fb-90d8-624d0ab2afa9" type="WinAuth.GoogleAuthenticator">
+    <name>magicbuilder618@gmail.com</name>
+    <created>1752479297625</created>
+    <autorefresh>true</autorefresh>
+    <allowcopy>false</allowcopy>
+    <copyoncode>false</copyoncode>
+    <hideserial>false</hideserial>
+    <skin>GMailIcon.png</skin>
+    <authenticatordata>
+      <servertimediff>16473</servertimediff>
+      <lastservertime>638914179125273240</lastservertime>
+      <secretdata>AE0B1778C2EFEE8089EDFC3D437CB5D3066094A3	6</secretdata>
+    </authenticatordata>
+  </WinAuthAuthenticator>
+  <WinAuthAuthenticator id="24b0e4e1-b25c-447e-9284-be7e7afe031a" type="WinAuth.GoogleAuthenticator">
+    <name>tomu4618@gmail.com</name>
+    <created>1752477775913</created>
+    <autorefresh>true</autorefresh>
+    <allowcopy>false</allowcopy>
+    <copyoncode>false</copyoncode>
+    <hideserial>false</hideserial>
+    <skin>GMailIcon.png</skin>
+    <authenticatordata>
+      <servertimediff>16200</servertimediff>
+      <lastservertime>638914179058004656</lastservertime>
+      <secretdata>24B656AFBF8E70DD0262E17DF446E9CED88D88AC	6</secretdata>
+    </authenticatordata>
+  </WinAuthAuthenticator>
+  <WinAuthAuthenticator id="429a918c-750b-4b73-b025-83d07312f5a3" type="WinAuth.GoogleAuthenticator">
+    <name>jackie20040618@gmail.com</name>
+    <created>1752478131418</created>
+    <autorefresh>true</autorefresh>
+    <allowcopy>false</allowcopy>
+    <copyoncode>false</copyoncode>
+    <hideserial>false</hideserial>
+    <skin>GMailIcon.png</skin>
+    <authenticatordata>
+      <servertimediff>15782</servertimediff>
+      <lastservertime>638914179082182521</lastservertime>
+      <secretdata>09C5E40129DDE84419038624C6E73653AF417247	6</secretdata>
+    </authenticatordata>
+  </WinAuthAuthenticator>
+  <WinAuthAuthenticator id="4d295446-2a77-4b9f-b298-09f042ba385b" type="WinAuth.GoogleAuthenticator">
+    <name>monnkey190225@gmail.com</name>
+    <created>1752478331304</created>
+    <autorefresh>true</autorefresh>
+    <allowcopy>false</allowcopy>
+    <copyoncode>false</copyoncode>
+    <hideserial>false</hideserial>
+    <skin>GMailIcon.png</skin>
+    <authenticatordata>
+      <servertimediff>16209</servertimediff>
+      <lastservertime>638914179107910163</lastservertime>
+      <secretdata>FB79F42F6B998413B68AC4ED1E0CF9CCE0AB243D	6</secretdata>
+    </authenticatordata>
+  </WinAuthAuthenticator>
+  <WinAuthAuthenticator id="4d9aa8b0-a3d8-45c0-adc3-2885ce66841b" type="WinAuth.GoogleAuthenticator">
+    <name>Gilberto Upwork</name>
+    <created>1755284145181</created>
+    <autorefresh>false</autorefresh>
+    <allowcopy>false</allowcopy>
+    <copyoncode>false</copyoncode>
+    <hideserial>false</hideserial>
+    <skin></skin>
+    <authenticatordata>
+      <servertimediff>16292</servertimediff>
+      <lastservertime>638914179157075527</lastservertime>
+      <secretdata>9A314962B3BF10496C28920262EB8048528CFCFE	6</secretdata>
+    </authenticatordata>
+  </WinAuthAuthenticator>
+  <WinAuthAuthenticator id="4f1a37de-df67-471f-b524-09fdc2b234cd" type="WinAuth.GoogleAuthenticator">
+    <name>Guru: Gilberto</name>
+    <created>1753107865325</created>
+    <autorefresh>true</autorefresh>
+    <allowcopy>false</allowcopy>
+    <copyoncode>false</copyoncode>
+    <hideserial>false</hideserial>
+    <skin>WarcraftIcon.png</skin>
+    <authenticatordata>
+      <servertimediff>15867</servertimediff>
+      <lastservertime>638914179141334910</lastservertime>
+      <secretdata>373633393531353465336264303239353635306347555255324641404D41494E415050	6</secretdata>
+    </authenticatordata>
+  </WinAuthAuthenticator>
+</WinAuth>
